@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <h2>Search Results </h2>
+      <ul>
+        {% for patient in search_results %}
+          <li>Patient - <a href="{% url 'search-profile' patient.id %}">{{ patient.username }}</a></li>
+        {% empty %}
+          <li>No results found.</li>
+        {% endfor %}
+      </ul>
+{% endblock content %}

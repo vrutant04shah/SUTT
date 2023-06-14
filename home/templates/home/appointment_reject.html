@@ -1,0 +1,10 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <h2>Reject Appointment</h2>
+    
+    <p>Are you sure you want to reject the following appointment?</p>
+    <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Reject Appointment">
+    </form>
+{% endblock content %}

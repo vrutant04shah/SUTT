@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    {% for appointment in approved %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                <h3 class="mr-2">Appointment for {{ appointment.appointment.user }}</h3>
+                </div>
+                <p> Doctor Consulted : {{ appointment.doctor.name }}</p>
+                <p> Doctor Speciality : {{ appointment.appointment.doc_type }}</p>
+                <p>Description: {{ appointment.appointment.description }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

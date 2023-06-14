@@ -1,0 +1,10 @@
+{% extends 'home/base.html' %}
+{% load socialaccount %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2> You are already logged In!!</h2>
+    {% else %}
+        <h4> To login as a Staff member - <a href="{% url 'staff-login' %}">Click Here</a></h4>
+        <h4> To login as a new Patient - <a href="{% provider_login_url 'google' %}">Click Here</a></h4>
+    {% endif %}
+{% endblock content %}

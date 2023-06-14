@@ -1,0 +1,26 @@
+<style>
+a.custom-link-danger {
+    color:red;
+}
+
+a.custom-link-success {
+    color:green;
+}
+</style>
+
+{% extends 'home/base.html' %}
+{% block content %}
+    {% for appointment in appointments %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                <h3 class="mr-2">Appointment for {{ appointment.user }}</h3>
+                </div>
+                <p>{{ appointment.description }}</p>
+                <p> Doctor Consulted : {{ appointment.doc_type }}
+            </div>
+            <button class="btn btn-outline-success"><a href="{% url 'approve-approval' appointment.id %}" class="custom-link-success">Approve</a></button>
+            <button class="btn btn-outline-danger"><a href="{% url 'reject-approval' appointment.id %}" class="custom-link-danger">Reject</a></button>
+        </article>
+    {% endfor %}
+{% endblock content %}

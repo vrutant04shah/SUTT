@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load socialaccount %}
+{% block content %}
+    <h3> Welcome to MedC </h3>
+    {% if user.is_authenticated %}
+    {% else %}
+    <ul>
+        <li>For new Patients, <a href="{% provider_login_url 'google' %}"> Click Here</a> to login with Google.</li>
+        <li>After logging in, you can make appointments with the doctor.</li>
+        <li>For staff users , Login or Register using icons on Navigation Bar.</li>
+    </ul>
+    {% endif %}
+{% endblock content %}

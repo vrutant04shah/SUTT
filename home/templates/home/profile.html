@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+        {% if user.is_staff %}
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Staff Profile</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update Profile</button>
+                </div>
+            </form>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Patient Profile</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <p>Prescriptions: {{ user.prescriptions }}</p>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update Profile</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock content %}
